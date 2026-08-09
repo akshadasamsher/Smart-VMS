@@ -1,0 +1,13 @@
+{
+  "cameras": [
+    {
+      "camera_id": "Camera 01",
+      "name": "Main Entrance",
+      "video_source": "camera01.mp4",
+      "status": "Online",
+      "detection_enabled": true,
+      "detection_zone": "Restricted Area",
+      "model": "YOLO"
+    }
+  ]
+}
