@@ -1,0 +1,182 @@
+# Smart Video Management System (VMS)
+
+## 1. Project Overview
+
+Smart Video Management System (VMS) is an AI-assisted surveillance application designed to monitor CCTV footage and identify intrusion events.
+
+The system provides a unified dashboard where users can view recorded camera footage, monitor AI-detected events, and review event information.
+
+The prototype uses one CCTV camera, Camera 01.
+
+## 2. Objectives
+
+The main objectives of the project are:
+
+- Display CCTV camera footage.
+- Provide video playback.
+- Detect people using AI.
+- Identify intrusion in a configured restricted zone.
+- Record detected events.
+- Display event timestamps.
+- Display confidence scores.
+- Display the camera and detection zone.
+- Provide a dashboard for surveillance monitoring.
+
+## 3. Technologies Used
+
+### Frontend
+- React
+- Vite
+- JavaScript
+- CSS
+
+### Backend
+- Python
+- FastAPI
+- Uvicorn
+
+### AI
+- YOLO
+- Ultralytics
+
+### Database
+- SQLite
+
+## 4. System Architecture
+
+The system consists of three major components:
+
+1. Frontend
+2. Backend API
+3. AI Detection Engine
+
+The frontend communicates with the FastAPI backend using HTTP requests.
+
+The AI detection engine processes the CCTV video and detects people entering the configured restricted area.
+
+Detected events are sent to the backend and stored in the SQLite database.
+
+## 5. Working Process
+
+1. Camera 01 video is loaded into the system.
+2. The AI detection engine reads the video frame by frame.
+3. YOLO detects people in the video.
+4. The system checks whether a detected person enters the configured restricted zone.
+5. If an intrusion is detected, an event is generated.
+6. The event contains:
+   - Camera ID
+   - Event type
+   - Timestamp
+   - Confidence
+   - Detection zone
+7. The event is sent to the FastAPI backend.
+8. The backend stores the event in SQLite.
+9. The frontend retrieves the events from the API.
+10. Events are displayed on the dashboard.
+
+## 6. AI Detection
+
+The project uses YOLO for object detection.
+
+The current implementation focuses on detecting the `person` class.
+
+Example:
+
+Camera:
+Camera 01
+
+Event:
+Intrusion
+
+Zone:
+Restricted Area
+
+Confidence:
+94%
+
+Timestamp:
+10.5 seconds
+
+## 7. Detection Zone
+
+A restricted detection zone is configured for Camera 01.
+
+The system generates an intrusion event when a detected person enters the configured restricted area.
+
+This helps reduce irrelevant detections outside the monitored region.
+
+## 8. Dashboard
+
+The dashboard provides:
+
+- Camera status
+- AI detection count
+- Recent detections
+- Active alerts
+- Storage information
+- Event information
+- Video playback
+
+## 9. API
+
+The backend provides an API endpoint for retrieving events.
+
+GET:
+
+`/events`
+
+The detection engine uses:
+
+POST:
+
+`/events`
+
+to submit newly detected events.
+
+## 10. Database
+
+SQLite is used to store detected events.
+
+Each event contains:
+
+- ID
+- Camera ID
+- Event type
+- Timestamp
+- Confidence
+- Zone
+- Created time
+
+## 11. Testing
+
+The system was tested using Camera 01 recorded CCTV footage.
+
+Example detected events:
+
+Camera: Camera 01  
+Event: Intrusion  
+Zone: Restricted Area  
+Confidence: 0.94  
+Timestamp: 10.5 seconds
+
+## 12. Future Enhancements
+
+Future versions can support:
+
+- Multiple cameras
+- Live RTSP streams
+- Multiple detection zones
+- Person tracking
+- Vehicle detection
+- Face recognition
+- Email notifications
+- SMS notifications
+- Cloud storage
+- User authentication
+- Advanced analytics
+
+## 13. Conclusion
+
+The Smart VMS prototype demonstrates how AI-based video analytics can be integrated with a modern web-based surveillance dashboard.
+
+The system combines video playback, AI detection, event storage, REST APIs, and dashboard visualization into a single application.
